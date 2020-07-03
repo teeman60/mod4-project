@@ -5,8 +5,8 @@ class Meme extends Component {
     render() { 
         return ( 
 
-            <div>
-                <h1>{this.props.meme.title}</h1>
+            <div onClick={() => this.props.addToCollection(this.props.meme)}>
+                <h3>{this.props.meme.title}</h3>
                 <img src={this.props.meme.url} alt="" height="300" width="300"/>
             </div>
          );

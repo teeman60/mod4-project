@@ -15,6 +15,7 @@ class App extends Component  {
     this.state = {
       memes: [],
       displayMemes: [],
+      collections: [],
       searchTerm: "",
       sortedMemes: []
     }
@@ -24,6 +25,19 @@ class App extends Component  {
     this.setState({
       displayMemes: this.state.displayMemes.sort((a, b) => a.title > b.title ? 1 : -1)
     })
+  }
+
+
+  addToCollection = (meme) => {
+    // debugger
+    if (!this.state.collections.includes(meme)) {
+    this.setState({
+      collections: [...this.state.collections, meme]
+    })
+  } else {
+    alert("Meme already included in collection")
+  }
+    
   }
 
   
@@ -39,22 +53,46 @@ class App extends Component  {
     })
   }
 
+
   changeSearchTerm = (term) => {
     this.setState({
       searchTerm: term
     })
   }
-    
+
+
+  handleSearch = () => {
+
+    // debugger
+    let filtered = this.state.displayMemes.filter(meme => meme.title.toLowerCase().includes(this.state.searchTerm) || meme.title.includes(this.state.searchTerm))
+    this.setState({
+      displayMemes: filtered
+    })
+  }
+   
+  makeNewMeme = (memeObj) => {
+    const newMeme = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({...memeObj})
+    }
+    // fetch("", newMeme)
+    // .then( res => res.json() )
+    // .then( data => {
+    //   this.setState({
+    //     : [...this.state.transactions, data]
+    //   })
+  }
 
 
   render () {
     return (
       <div className="App">
   
-        <NavBar sortByTitle={this.sortByTitle} changeSearchTerm={this.changeSearchTerm}/>
-        <NewMemeForm />
-        <MemeList memes={this.state.displayMemes}/>
-        <Collection />
+        <NavBar sortByTitle={this.sortByTitle} changeSearchTerm={this.changeSearchTerm} handleSearch={this.handleSearch}/>
+        <NewMemeForm makeNewMeme={this.makeNewMeme}/>
+        <MemeList memes={this.state.displayMemes} addToCollection={this.addToCollection}/>
+        <Collection collections={this.state.collections}/>
         
       </div>
     );

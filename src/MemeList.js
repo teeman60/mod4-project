@@ -5,7 +5,7 @@ const MemeList = (props) => {
     return ( 
         <div>
             Meme List
-           {props.memes.map((meme, i) =><Meme key={i} meme={meme} />)} 
+           {props.memes.map((meme, i) =><Meme key={i} meme={meme} addToCollection={props.addToCollection}/>)} 
         </div>
     );
 }

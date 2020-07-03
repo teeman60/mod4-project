@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Meme from './Meme'
 
 class Collection extends Component {
     // state = {  }
@@ -7,6 +8,7 @@ class Collection extends Component {
 
             <div>
                 User Meme Collection
+                {this.props.collections.map((collection, i) => <Meme key={i} meme={collection} />)}
             </div>
          );
     }

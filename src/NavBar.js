@@ -3,14 +3,14 @@ import React from 'react';
 const NavBar = (props) =>  {
     return ( 
         <div>
-            <div class="App-header"> 
+            <div className="App-header"> 
                 <input
                     type="text" 
                     name="search" 
-                    placeholder="search" 
+                    placeholder="search for memes" 
                     onChange={(e) => {props.changeSearchTerm(e.target.value)}}
                 />
-                <i className="circular search link icon"></i> 
+                <button type="submit" onClick={props.handleSearch}>Find Meme</button> 
                 
                 <button onClick={props.sortByTitle} value={null}>Sort By Name</button>
             </div>
