@@ -5,9 +5,9 @@ class Meme extends Component {
     render() { 
         return ( 
 
-            <div onClick={() => this.props.addToCollection(this.props.meme)}>
-                <h3>{this.props.meme.title}</h3>
-                <img src={this.props.meme.url} alt="" height="300" width="300"/>
+            <div className="card"onClick={() => this.props.addToCollection(this.props.meme)}>
+                <h5>{this.props.meme.name}</h5>
+                <img src={this.props.meme.url} alt="" height="200" width="200" class="meme-avatar"/>
             </div>
          );
     }

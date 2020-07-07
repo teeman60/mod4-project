@@ -42,23 +42,53 @@ class NewMemeForm extends Component {
         this.props.makeNewMeme(this.state)
     }
 
-    render() { 
-        return ( 
 
-            <div>
+    // let addToy = false;
+
+    //     document.addEventListener("DOMContentLoaded", () => {
+    //     const addBtn = document.querySelector("#new-toy-btn");
+    //     const toyFormContainer = document.querySelector(".container");
+    //     addBtn.addEventListener("click", () => {
+    // // hide & seek with the form
+    //  addToy = !addToy;
+    //     if (addToy) {
+    //         toyFormContainer.style.display = "block";
+    //     } else {
+    //   toyFormContainer.style.display = "none";
+    //     }
+    //     });
+    // });
+    
+
+    render() { 
+
+        // this.props.addMeme ?
+        // return
+        // (
+        return ( 
+        <div>
+            {this.props.addMeme
+            ?           
+            <div >
                 <h3>New Meme Form</h3>
             
-                <form onSubmit={event => this.handleSubmit(event)}>        
-                <input type='text' placeholder='Meme Title' onChange={event => this.handleTitle(event)} value={this.state.title}/>
-                <input type='text' placeholder='Meme Subreddit' onChange={event => this.handleSubreddit(event)} value={this.state.subreddit}/>
-                <input type='text' placeholder='Meme Post Link' onChange={event => this.handlePostLink(event)} value={this.state.postLink}/> 
-                <input type='text' placeholder='Meme URL' onChange={event => this.handleURL(event)} value={this.state.url}/> 
+                <form class="add-meme-form" onSubmit={event => this.handleSubmit(event)} className=".add-meme-form">        
+                <input className="input-text" type='text' placeholder='Meme Title' onChange={event => this.handleTitle(event)} value={this.state.title}/>
+                <input className="input-text" type='text' placeholder='Meme Subreddit' onChange={event => this.handleSubreddit(event)} value={this.state.subreddit}/>
+                <input className="input-text" type='text' placeholder='Meme Post Link' onChange={event => this.handlePostLink(event)} value={this.state.postLink}/> 
+                <input className="input-text" type='text' placeholder='Meme URL' onChange={event => this.handleURL(event)} value={this.state.url}/> 
                   
 
-                <input type='submit' value='Add Meme'/>
+                <input className="submit" type='submit' value='Add Meme'/>
                 </form>
-            </div>
+            </div> 
+            : 
+            null}
+        </div>
          );
+         
+        //  :
+        //  null
     }
 }
  
